@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      * {
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+      }
+      body::before {
+        content: "";
+        background: url("https://t4.ftcdn.net/jpg/02/10/54/69/360_F_210546904_9BCZEy11YRxLIXH4WHC1btb0sPx7nF2m.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+      }
+      .container {
+        color: white;
+        width: 70vw;
+        height: 70vh;
+        /* border: 2px solid black; */
+        margin: 5% auto;
+        background: transparent;
+        backdrop-filter: blur(20px);
+        text-align: center;
+        box-shadow: 0px 2px 50px 25px white;
+        box-sizing: border-box;
+        border-radius: 40px;
+      }
+      h1 {
+        font-size: 50px;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+      label {
+        font-size: 20px;
+      }
+      #celsius {
+        background: none;
+        border: 2px white dashed;
+        border-radius: 20px;
+        outline: none;
+        margin: 30px;
+        padding: 10px;
+        height: 40px;
+        width: fit-content;
+        text-align: center;
+        font-size: 25px;
+        color: white;
+      }
+      #result {
+        font-size: 40px;
+      }
+
+      @media (max-width: 500px) {
+        .container {
+          margin: 30% auto  5%;
+        }
+
+        #celsius {
+          width: 170px;
+        }
+
+        h1 {
+          font-size: 31px;
+        }
+        #result {
+        font-size: 30px;
+        padding: 10px;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <br /><br />
+      <h1>Temperature Converter</h1>
+      <div class="input-container">
+        <label for="celsius">Enter temperature in Celsius:</label><br />
+        <input type="number" id="celsius" placeholder="Celsius" />
+      </div>
+      <br><br>
+      <div id="result">Please enter a value</div>
+    </div>
+    <script>
+      document.getElementById("celsius").addEventListener("input", function () {
+        const celsiusInput = document.getElementById("celsius");
+        const resultElement = document.getElementById("result");
+
+        if (celsiusInput.value === "") {
+          resultElement.textContent = "Please enter a value";
+        } else {
+          const celsius = parseFloat(celsiusInput.value);
+          const fahrenheit = (celsius * 9) / 5 + 32;
+          resultElement.textContent = `${celsius}°C is equal to ${fahrenheit.toFixed(
+            2
+          )}°F`;
+        }
+      });
+    </script>
+  </body>
+</html>
